@@ -413,3 +413,152 @@ console.log(groupBy(users, "gender"));
 
 //     ]
 // }
+
+const arr = [...Array(1000000).keys()];
+
+console.time("for loop");
+
+const newArr = [];
+for (let index = 0; index < arr.length; index++) {
+  const element = arr[index];
+  newArr.push(element);
+}
+
+console.timeEnd("for loop");
+
+console.time("foreach loop");
+
+const newArr1 = [];
+arr.forEach(element => {
+  newArr1.push(element);
+});
+
+console.timeEnd("foreach loop");
+
+console.time("map loop");
+
+const newArr3 = arr.map(item => item);
+
+console.timeEnd("map loop");
+
+console.time("reduce loop");
+
+const newArr4 = arr.reduce(item => item);
+
+console.timeEnd("reduce loop");
+
+// const arr = [{
+//     fname: 'yagnesh',
+//     lname: 'modh',
+//     fullName: 'yagnesh modh'
+// },
+// {
+//     fname: 'rohit',
+//     lname: 'sharma',
+//     fullName: 'rohit sharma'
+// }];
+
+const arr = [
+  {
+    fname: "yagnesh",
+    lname: "modh",
+    age: 8,
+    fullName: "yagnesh modh"
+  },
+  {
+    fname: "rohit",
+    lname: "sharma",
+    age: 40,
+    fullName: "rohit sharma"
+  },
+  {
+    fname: "rohit",
+    lname: "sharma",
+    age: 10,
+    fullName: "rohit sharma"
+  },
+  {
+    fname: "rohit",
+    lname: "sharma",
+    age: 15,
+    fullName: "rohit sharma"
+  }
+];
+
+const groupBy = arr.reduce((p, c) => {
+  const ageGroup = parseInt(c.age / 10);
+  (p[`${ageGroup}0-${ageGroup}9`] = p[`${ageGroup}0-${ageGroup}9`] || []).push(
+    c
+  );
+  return p;
+}, {});
+
+console.log(groupBy);
+
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4
+};
+
+console.log(Object.keys(obj));
+
+for (let item in obj) {
+  console.log(item);
+  console.log(obj[item]);
+}
+
+for (const [key, value] of Object.entries(obj)) {
+  console.log(key);
+  console.log(value);
+}
+
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("resolve p1");
+  }, 2000);
+});
+
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("resolve p2");
+  }, 1000);
+});
+
+const prom = async () => {
+  // start loader;
+  try {
+    const res = await p1;
+    const res1 = await p2;
+  } catch (error) {
+    console.log(error);
+  } finally {
+    // stop loader
+  }
+};
+
+prom();
+console.log(1);
+
+function* xyz() {
+  console.log(1);
+  yield 2;
+  console.log(2);
+  yield 3;
+  yield 4;
+  yield 5;
+  return "abc";
+}
+
+const gen = xyz();
+
+for (const iterator of gen) {
+  console.log(iterator);
+}
+// console.log(gen.next())
+// // console.log(gen.next())
+// // console.log(gen.next())
+// // console.log(gen.next())
+// // console.log(gen.next())
+// // console.log(gen.next())
