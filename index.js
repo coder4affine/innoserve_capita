@@ -201,3 +201,215 @@ const user = {
 user.name = "rohit";
 
 console.log(user);
+
+const a = { a: 1, b: 2 };
+
+a = 3;
+
+console.log(a);
+
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+// spread operator
+const obj1 = { ...obj, d: 4 };
+
+console.log(obj1);
+
+const a = 3;
+// destructuring
+const { a: aa, b } = obj1;
+
+console.log(aa);
+
+console.log(b);
+
+const user = {
+  name: "yagnesh",
+  gender: "",
+  abc: ""
+};
+
+let updatedUser = { ...user, age: 30 };
+
+updatedUser = { ...updatedUser, gender: "Male" };
+
+console.log(updatedUser);
+
+const { abc, ...rest } = updatedUser;
+
+console.log(rest);
+
+console.log(user);
+
+function add(...rest) {
+  console.log(rest);
+
+  // let sum  = 0;
+  // for (let i = 0; i < rest.length; i++) {
+  //     const element = rest[i];
+  //     sum += element;
+  // }
+  // return sum;
+  // return a + b + c + d + e + f + g + h;
+}
+
+console.log(add(1, "abc", 3, "pqr", 5, 6, 7));
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+
+// const newArr = [8, ...arr];
+
+const [, , , ...rest] = arr;
+console.log(rest);
+
+// const newArr1 = [...arr.slice(0, 3),...arr.slice(4) ]
+
+// const newArr2 = arr.filter(x => x !== 4 && x !== 5)
+
+// console.log(newArr2);
+
+// arr.push(8);
+
+// console.log(arr);
+
+// arr.pop();
+
+// console.log(arr)
+
+// map
+
+// reduce
+
+// forin
+
+// forof
+
+// const users = [
+//     {
+//         name: 'rohit',
+//         gender: 'male',
+//     },
+//     {
+//         name: 'shikhar',
+//         gender: 'male',
+//     },
+//     {
+//         name: 'deepika',
+//         gender: 'female'
+//     },
+//     {
+//         name: 'radhika',
+//         gender: 'female'
+//     }
+// ];
+
+// const updatedUsers = users.map((x, i) => {
+//     if(x.gender === 'male') {
+//         return {  ...x, profession: 'cricketer' }
+//     }
+//     return {...x, profession: 'actor' }
+// });
+
+console.log(updatedUsers);
+
+// const arr = [1,2,3,4,5,6,7,8,9, 10];
+
+// const newArr = arr.map((item, i) => {
+//     if(i % 2 === 0){
+//         return item * 2
+//     }
+//     return item * 3
+// });
+
+// console.log(newArr)
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// let sum = 0;
+// for (let i = 0; i < arr.length; i++) {
+//     const element = arr[i];
+//     sum += element;
+// }
+
+// console.log(sum);
+
+const sum = arr.reduce((p, c) => p + c, 10);
+
+console.log(sum);
+
+const users = [
+  {
+    name: "rohit",
+    gender: "male"
+  },
+  {
+    name: "shikhar",
+    gender: "male"
+  },
+  {
+    name: "deepika",
+    gender: "female"
+  },
+  {
+    name: "radhika",
+    gender: "female"
+  }
+];
+
+const updatedUser = users.reduce((p, c) => {
+  if (c.gender === "male") {
+    return [...p, { ...c, profession: "cricketer" }];
+  }
+  return [...p, { ...c, profession: "actor" }];
+}, []);
+
+console.log(updatedUser);
+
+const a = null;
+
+const b = 2;
+
+const c = a || b;
+
+const d = a && b;
+
+const users = [
+  {
+    name: "rohit",
+    gender: "male"
+  },
+  {
+    name: "shikhar",
+    gender: "male"
+  },
+  {
+    name: "deepika",
+    gender: "female"
+  },
+  {
+    name: "radhika",
+    gender: "female"
+  }
+];
+
+const groupBy = (data, key) => {
+  return data.reduce((p, c) => {
+    (p[c[key]] = p[c[key]] || []).push(c);
+    return p;
+  }, {});
+};
+
+console.log(groupBy(users, "gender"));
+
+// {
+//     male: [
+
+//     ],
+//     female: [
+
+//     ]
+// }
