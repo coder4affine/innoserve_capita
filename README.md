@@ -45,3 +45,5 @@ https://reactjs.org/docs/typechecking-with-proptypes.html
 ES7 React/Redux/GraphQL/React-Native snippets
 
 https://reactjs.org/docs/react-component.html
+
+https://demos.scotch.io/visual-guide-to-css3-flexbox-flexbox-playground/demos/
