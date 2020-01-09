@@ -60,28 +60,56 @@ class index extends Component {
     // });
   };
 
-  changeStatus = todo => {
+  changeStatus = async todoData => {
     const { todos } = this.state;
+    try {
+      const res = await fetch(`http://localhost:3004/todos/${todoData.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ ...todoData, isDone: !todoData.isDone }),
+        headers: {
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+        },
+      });
+      const todo = await res.json();
+      this.setState({
+        todos: todos.map(x => {
+          if (x.id === todo.id) {
+            return todo;
+          }
+          return x;
+        }),
+      });
+    } catch (error) {
+      console.warn('error', error);
+    }
     // const i = todos.findIndex(x => x.id === todo.id);
     // if (i !== -1) {
-    this.setState({
-      todos: todos.map(x => {
-        if (x.id === todo.id) {
-          return { ...x, isDone: !x.isDone };
-        }
-        return x;
-      }),
-    });
+    // this.setState({
+    //   todos: todos.map(x => {
+    //     if (x.id === todo.id) {
+    //       return { ...x, isDone: !x.isDone };
+    //     }
+    //     return x;
+    //   }),
+    // });
 
     // [...todos.slice(0, i), { ...todo, isDone: !todo.isDone }, ...todos.slice(i + 1)],
     // }
   };
 
-  deleteTodo = todo => {
+  deleteTodo = async todo => {
     const { todos } = this.state;
-    this.setState({
-      todos: todos.filter(x => x.id !== todo.id),
-    });
+    try {
+      await fetch(`http://localhost:3004/todos/${todo.id}`, {
+        method: 'DELETE',
+      });
+      this.setState({
+        todos: todos.filter(x => x.id !== todo.id),
+      });
+    } catch (error) {
+      console.warn('error', error);
+    }
   };
 
   render() {
