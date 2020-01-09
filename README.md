@@ -41,3 +41,5 @@ https://www.valentinog.com/blog/babel/
 yarn add -D html-webpack-plugin html-loader
 
 https://reactjs.org/docs/typechecking-with-proptypes.html
+
+ES7 React/Redux/GraphQL/React-Native snippets
