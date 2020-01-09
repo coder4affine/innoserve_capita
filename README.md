@@ -35,3 +35,9 @@ npm install eslint --save-dev
 
 yarn add eslint --dev
 npx eslint --init
+
+https://www.valentinog.com/blog/babel/
+
+yarn add -D html-webpack-plugin html-loader
+
+https://reactjs.org/docs/typechecking-with-proptypes.html

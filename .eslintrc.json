@@ -5,11 +5,7 @@
     "node": true
   },
   "parser": "babel-eslint",
-  "extends": [
-    "plugin:react/recommended",
-    "plugin:prettier/recommended",
-    "airbnb"
-  ],
+  "extends": ["plugin:react/recommended", "plugin:prettier/recommended", "airbnb"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -22,5 +18,13 @@
     "sourceType": "module"
   },
   "plugins": ["babel", "react", "import", "jsx-a11y", "react-hooks"],
-  "rules": {}
+  "rules": {
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/static-property-placement": [0]
+  }
 }
