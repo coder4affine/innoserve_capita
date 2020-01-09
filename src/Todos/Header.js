@@ -7,6 +7,6 @@ import React, { memo } from 'react';
 //   },
 // };
 
-const Header = ({ user }) => <div>{user.name}</div>;
+const Header = ({ user }) => <div>{user && user.name}</div>;
 
 export default memo(Header);
