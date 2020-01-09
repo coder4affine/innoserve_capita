@@ -6,7 +6,7 @@
 // import React from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './src/App';
-import Todos from './src/Todos';
+import App from './src/App';
+// import Todos from './src/Todos';
 
-ReactDOM.render(<Todos />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

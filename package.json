@@ -14,9 +14,12 @@
     "prettier": "prettier --write 'src/**/*.{ts,js,css,html}'"
   },
   "dependencies": {
+    "@loadable/component": "^5.11.0",
+    "date-fns": "^2.9.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
