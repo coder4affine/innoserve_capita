@@ -44,6 +44,13 @@ class index extends Component {
     // }
   };
 
+  deleteTodo = todo => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.filter(x => x.id !== todo.id),
+    });
+  };
+
   render() {
     const { todoText, todos } = this.state;
     return (
@@ -98,6 +105,9 @@ class index extends Component {
                 >
                   {todo.text}
                 </span>
+                <button type="button" onClick={() => this.deleteTodo(todo)}>
+                  Delete
+                </button>
               </div>
             ))}
           </div>
