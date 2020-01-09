@@ -9,7 +9,22 @@ class index extends Component {
     this.state = {
       todoText: '',
       todos: [],
+      error: false,
+      loading: false,
     };
+  }
+
+  async componentDidMount() {
+    this.setState({ loading: true });
+    try {
+      const res = await fetch('http://localhost:3004/todos');
+      const todos = await res.json();
+      this.setState({ todos });
+    } catch (error) {
+      this.setState({ error: error.message });
+    } finally {
+      this.setState({ loading: false });
+    }
   }
 
   clickMe = () => {};
@@ -18,13 +33,31 @@ class index extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  addTodo = () => {
+  addTodo = async e => {
+    e.preventDefault();
     const { todoText, todos } = this.state;
+    this.setState({ loading: true });
+    try {
+      const res = await fetch('http://localhost:3004/todos', {
+        method: 'POST',
+        body: JSON.stringify({ text: todoText, isDone: false }),
+        headers: {
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+        },
+      });
+      const todo = await res.json();
+      this.setState({ todos: [...todos, todo], todoText: '' });
+    } catch (error) {
+      this.setState({ error: error.message });
+    } finally {
+      this.setState({ loading: false });
+    }
 
-    this.setState({
-      todos: [...todos, { id: new Date().getTime(), text: todoText, isDone: false }],
-      todoText: '',
-    });
+    // this.setState({
+    //   todos: [...todos, { id: new Date().getTime(), text: todoText, isDone: false }],
+    //   todoText: '',
+    // });
   };
 
   changeStatus = todo => {
@@ -52,7 +85,10 @@ class index extends Component {
   };
 
   render() {
-    const { todoText, todos } = this.state;
+    const { todoText, todos, error, loading } = this.state;
+    if (error) {
+      return <h1>{error}</h1>;
+    }
     return (
       <div className="container">
         <div
@@ -66,30 +102,31 @@ class index extends Component {
           <h1>Todos</h1>
         </div>
         <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }} id="body">
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <input
-              type="text"
-              style={{
-                width: 200,
-                height: 34,
-                padding: '6px 12px',
-                fontSize: 18,
-                lineHeight: 1.5,
-                color: '#555',
-                backgroundColor: '#fff',
-                backgroundImage: 'none',
-                border: '1px solid #ccc',
-                borderRadius: 4,
-              }}
-              name="todoText"
-              value={todoText}
-              onChange={this.changeText}
-            />
-            <button type="button" className="btn btn-primary" onClick={this.addTodo}>
-              Add Todo
-            </button>
-          </div>
-
+          <form onSubmit={this.addTodo}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <input
+                type="text"
+                style={{
+                  width: 200,
+                  height: 34,
+                  padding: '6px 12px',
+                  fontSize: 18,
+                  lineHeight: 1.5,
+                  color: '#555',
+                  backgroundColor: '#fff',
+                  backgroundImage: 'none',
+                  border: '1px solid #ccc',
+                  borderRadius: 4,
+                }}
+                name="todoText"
+                value={todoText}
+                onChange={this.changeText}
+              />
+              <button type="submit" disabled={loading} className="btn btn-primary">
+                Add Todo
+              </button>
+            </div>
+          </form>
           <div>
             {todos.map(todo => (
               <div key={todo.id}>
