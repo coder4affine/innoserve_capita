@@ -9,6 +9,6 @@ import ReactDOM from 'react-dom';
 import App from './src/App';
 
 ReactDOM.render(
-  <App title="Hello from index" caption="caption" isTruthy={false} />,
+  <App title="Hello," caption="caption" isTruthy={false} />,
   document.getElementById('root'),
 );
