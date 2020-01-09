@@ -27,3 +27,11 @@ babel-loader: to execute babel command
 @babel/core: base file for babel
 @babel/preset-env: to convert till es8 code to normal javascript
 @babel/preset-react: to execute react code in js file.
+
+for eslint
+npm install eslint --save-dev
+
+# or
+
+yarn add eslint --dev
+npx eslint --init
