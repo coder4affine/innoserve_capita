@@ -10,11 +10,18 @@ const Home = loadable(() => import('./screens/home'), {
 const Users = loadable(() => import('./screens/users'), {
   fallback: <div>Loading...</div>,
 });
+const Login = loadable(() => import('./screens/login'), {
+  fallback: <div>Loading...</div>,
+});
 
 const routes = [
   {
     path: '/',
     exact: true,
+    component: Login,
+  },
+  {
+    path: '/home',
     component: Home,
   },
   {

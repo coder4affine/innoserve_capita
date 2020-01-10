@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import PageNotFound from './screens/pageNotFound';
 import routes from './routes';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import LocaleContext from './context/localeContext';
 
 const App = () => (
   <Router>
@@ -20,17 +21,19 @@ const App = () => (
           </li>
         </ul>
       </nav>
-      <Switch>
-        {routes.map(route => {
-          if (route.isPrivate) {
-            return <PrivateRoute isAuthenticated key={route.path} {...route} />;
-          }
-          return <Route key={route.path} {...route} />;
-        })}
-        <Route>
-          <PageNotFound />
-        </Route>
-      </Switch>
+      <LocaleContext>
+        <Switch>
+          {routes.map(route => {
+            if (route.isPrivate) {
+              return <PrivateRoute isAuthenticated key={route.path} {...route} />;
+            }
+            return <Route key={route.path} {...route} />;
+          })}
+          <Route>
+            <PageNotFound />
+          </Route>
+        </Switch>
+      </LocaleContext>
     </div>
   </Router>
 );
