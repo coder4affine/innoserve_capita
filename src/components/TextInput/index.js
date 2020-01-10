@@ -5,7 +5,7 @@ import { ErrorMessage } from 'formik';
 
 const index = ({ field, ...props }) => (
   <div>
-    <TextField {...props} {...field} variant="outlined" style={{ padding: 10 }} />
+    <TextField variant="outlined" style={{ padding: 10 }} {...props} {...field} />
     <ErrorMessage name={field.name} />
   </div>
 );

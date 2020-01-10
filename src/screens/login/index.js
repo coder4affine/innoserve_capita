@@ -1,6 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import TextInput from '../../components/TextInput';
+import Checkbox from '../../components/Checkbox';
 import Form from '../../components/Form';
 
 const wait = ms => new Promise(res => setTimeout(res, ms));
@@ -34,18 +35,10 @@ const fields = [
     },
   },
   {
-    name: 'email',
-    component: TextInput,
-    label: 'email',
-    type: 'email',
-    value: '',
-    validate: value => {
-      let error = '';
-      if (!value) {
-        error = 'Require...';
-      }
-      return error;
-    },
+    name: 'rememberMe',
+    component: Checkbox,
+    label: 'Remember Me',
+    value: false,
   },
 ];
 
