@@ -1,17 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Router, Switch, Route, Link } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import PageNotFound from './screens/pageNotFound';
 import routes from './routes';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import LocaleContext from './context/localeContext';
 
+export const customHistory = createBrowserHistory();
+
 const App = () => (
-  <Router>
+  <Router history={customHistory}>
     <div>
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li>
             <Link to="/about">About</Link>

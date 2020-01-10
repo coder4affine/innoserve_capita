@@ -55,3 +55,15 @@ npm install -g json-server
 json-server --watch db.json --port 3004
 
 https://reactjs.org/docs/code-splitting.html
+
+Any time on saturday sunday,,
+
+weekdays b4 9 or after 7
+
+Mobile Number: +91-8690090417
+
+twitter: @imyagnesh
+
+email: yagnesh.modh@gmail.com
+
+linkedIN: ymodh

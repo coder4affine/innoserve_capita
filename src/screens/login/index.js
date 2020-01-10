@@ -1,10 +1,13 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
+import { connect } from 'react-redux';
 import TextInput from '../../components/TextInput';
 import Checkbox from '../../components/Checkbox';
 import Form from '../../components/Form';
 
-const wait = ms => new Promise(res => setTimeout(res, ms));
+// const wait = ms => new Promise(res => setTimeout(res, ms));
 
 const fields = [
   {
@@ -42,7 +45,7 @@ const fields = [
   },
 ];
 
-const index = () => (
+const index = ({ user, products, login }) => (
   <div
     style={{
       display: 'flex',
@@ -56,17 +59,28 @@ const index = () => (
       <Form
         fields={fields}
         initialValues={fields.reduce((p, c) => ({ ...p, [c.name]: c.value }), {})}
-        onSubmit={async values => {
-          try {
-            await wait(2000);
-            console.warn(values);
-          } catch (error) {
-            console.warn(error);
-          }
+        onSubmit={() => {
+          login();
+          login();
+          login();
+          login();
+          login();
+          login();
+          login();
+          login();
         }}
       />
     </Paper>
   </div>
 );
 
-export default index;
+const mapStateToProps = state => ({
+  user: state.user,
+  products: state.products,
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: () => dispatch({ type: 'LOGIN_REQUEST' }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);
