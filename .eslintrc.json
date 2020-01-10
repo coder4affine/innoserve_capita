@@ -5,7 +5,7 @@
     "node": true
   },
   "parser": "babel-eslint",
-  "extends": ["plugin:react/recommended", "plugin:prettier/recommended", "airbnb"],
+  "extends": ["plugin:react/recommended", "plugin:prettier/recommended", "airbnb", "jest-enzyme"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"

@@ -1,22 +1,21 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
-// import { format } from 'date-fns';
+/* eslint-disable implicit-arrow-linebreak */
+import { connect } from 'react-redux';
+import Home from './Home';
+import { LOAD_CATEGORIES, REQUEST, SAVE_PRODUCT } from '../../constants/actionTypes';
 
-const index = ({ history }) => (
-  <div>
-    <h1>Home Page</h1>
-    <button
-      type="button"
-      onClick={() => {
-        history.push('about');
-        // import('date-fns').then(({ format }) => {
-        //   format(new Date(), 'MM-dd-yyyy');
-        // });
-      }}
-    >
-      Format date
-    </button>
-  </div>
-);
+function mapStateToProps(state) {
+  return {
+    categories: state.categories.map(x => ({ value: x, text: x })),
+    loading: state.loading[LOAD_CATEGORIES] || state.loading[SAVE_PRODUCT],
+  };
+}
 
-export default index;
+function mapDispatchToProps(dispatch) {
+  return {
+    loadCategories: () => dispatch({ type: `${LOAD_CATEGORIES}_${REQUEST}` }),
+    saveProductRequest: (value, actions) =>
+      dispatch({ type: `${SAVE_PRODUCT}_${REQUEST}`, payload: value, meta: actions }),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

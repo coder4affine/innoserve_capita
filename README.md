@@ -56,6 +56,8 @@ json-server --watch db.json --port 3004
 
 https://reactjs.org/docs/code-splitting.html
 
+yarn add jest enzyme enzyme-adapter-react-16 babel-jest @babel/plugin-syntax-dynamic-import @babel/plugin-proposal-export-namespace-from @babel/plugin-proposal-throw-expressions
+
 Any time on saturday sunday,,
 
 weekdays b4 9 or after 7

@@ -45,7 +45,7 @@ const fields = [
   },
 ];
 
-const index = ({ user, products, login }) => (
+export const Login = ({ user, products, login }) => (
   <div
     style={{
       display: 'flex',
@@ -59,16 +59,7 @@ const index = ({ user, products, login }) => (
       <Form
         fields={fields}
         initialValues={fields.reduce((p, c) => ({ ...p, [c.name]: c.value }), {})}
-        onSubmit={() => {
-          login();
-          login();
-          login();
-          login();
-          login();
-          login();
-          login();
-          login();
-        }}
+        onSubmit={login}
       />
     </Paper>
   </div>
@@ -83,4 +74,4 @@ const mapDispatchToProps = dispatch => ({
   login: () => dispatch({ type: 'LOGIN_REQUEST' }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(index);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

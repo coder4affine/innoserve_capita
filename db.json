@@ -10,5 +10,30 @@
       "isDone": false,
       "id": 2
     }
+  ],
+  "categories": [
+    "mobile",
+    "Laptop",
+    "Tablets"
+  ],
+  "products": [
+    {
+      "productName": "iphone",
+      "category": "mobile",
+      "price": 100000,
+      "id": 1
+    },
+    {
+      "productName": "ipad",
+      "category": "Tablets",
+      "price": 100000,
+      "id": 2
+    },
+    {
+      "productName": "iphone",
+      "category": "Laptop",
+      "price": 1000009,
+      "id": 3
+    }
   ]
 }
